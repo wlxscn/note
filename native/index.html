@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>原生拖拽实现</title>
+  </head>
+  <body>
+    <div id="target" style="width: 100px;height: 100px; background: red;">
+
+    </div>
+
+    <script type="text/javascript" src='./nativeDrag.js'></script>
+
+    <script type="text/javascript">
+      const target = document.getElementById('target');
+
+      // 鼠标位置
+      let startX = 0;
+      let startY = 0;
+
+      //目标的初始位置
+      let sourceX = 0;
+      let sourceY = 0;
+
+      addEventListen(target, 'mousedown', start);
+
+      function start(event) {
+        startX = event.pageX;
+        startY = event.pageY;
+
+        // 获取元素的初始位置
+        let pos = getPosition(target);
+        sourceX = pos.x;
+        sourceY = pos.y;
+
+        addEventListen(document, 'mousemove', move);
+        addEventListen(document, 'mouseup', end);
+      }
+
+      function move(event) {
+        let currentX = event.pageX;
+        let currentY = event.pageY;
+
+        let distanceX = currentX - startX;
+        let distanceY = currentY - startY;
+
+        setTargetPos(target, {
+          x: sourceX + distanceX,
+          y: sourceY + distanceY
+        })
+      }
+
+      function end(event) {
+        removeListen(document, 'mousemove' , move);
+        removeListen(document, 'mouseup' , end);
+      }
+    </script>
+  </body>
+</html>

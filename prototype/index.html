@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>原生拖拽实现</title>
+  </head>
+  <body>
+    <div id="target" style="width: 100px;height: 100px; background: red;">
+
+    </div>
+    <div id="target1" style="width: 100px;height: 100px; background: orange;">
+
+    </div>
+
+    <div id='target2'>
+      This text <strong>may</strong> be dragged.
+    </div>
+
+    <script type="text/javascript" src='./drag.js'></script>
+
+    <script type="text/javascript">
+      function dragWithCustomImage(event) {
+        var canvas = document.createElementNS("http://www.w3.org/1999/xhtml","canvas");
+        canvas.width = canvas.height = 50;
+
+        var ctx = canvas.getContext("2d");
+        ctx.lineWidth = 4;
+        ctx.moveTo(0, 0);
+        ctx.lineTo(50, 50);
+        ctx.moveTo(0, 50);
+        ctx.lineTo(50, 0);
+        ctx.stroke();
+
+        var dt = event.dataTransfer;
+        dt.setData('text/plain', 'Data to Drag');
+        dt.setDragImage(canvas, 25, 25);
+      }
+
+      const target = document.getElementById('target');
+      const target1 = document.getElementById('target1');
+      const target2 = document.getElementById('target2');
+      target2.ondragstart= dragWithCustomImage;
+      var drag= new Drag(target);
+      var drag1= new Drag(target1);
+    </script>
+  </body>
+</html>
+
+[{"nodeEname":"x0101470","hasPermission":true},{"nodeEname":"x0101472","hasPermission":true},{"nodeEname":"x0101471","hasPermission":true},{"nodeEname":"x0101350","hasPermission":true},{"nodeEname":"x0101474","hasPermission":true},{"nodeEname":"x0101473","hasPermission":true},{"nodeEname":"x0101110","hasPermission":true},{"nodeEname":"x0101476","hasPermission":true},{"nodeEname":"x0101475","hasPermission":true},{"nodeEname":"x0101477","hasPermission":true},{"nodeEname":"x0101070","hasPermission":true},{"nodeEname":"x0101040","hasPermission":true},{"nodeEname":"x0101120","hasPermission":true},{"nodeEname":"x0101001","hasPermission":true},{"nodeEname":"x0101440","hasPermission":true},{"nodeEname":"x0101000","hasPermission":true},{"nodeEname":"x0101003","hasPermission":true},{"nodeEname":"x0101002","hasPermission":true},{"nodeEname":"x0101006","hasPermission":true},{"nodeEname":"x0101516","hasPermission":true},{"nodeEname":"x0101080","hasPermission":true},{"nodeEname":"x0101050","hasPermission":true},{"nodeEname":"x0101370","hasPermission":true},{"nodeEname":"x0101010","hasPermission":true},{"nodeEname":"x0101130","hasPermission":true},{"nodeEname":"x0101060","hasPermission":true},{"nodeEname":"x0101460","hasPermission":true},{"nodeEname":"x0101100","hasPermission":true}]
