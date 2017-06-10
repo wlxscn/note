@@ -29,7 +29,7 @@ offsetLeft= (offsetParent的margin-left+padding-left)+当前元素的margin-left
 ### 与scroll相关的
 scrollWidth和scrollHeight
 
-document.body的scrollHeight和scrollWidth 
+document.body的scrollHeight和scrollWidth
 给定的高度小于浏览器的窗口，scrollHeight和scrollWidth返回的是浏览器的宽高
 给定宽高大于浏览器窗口，并且内容的宽高小于给定宽高，scrollHeight和scrollWidth返回给定宽高+margin+padding+border
 给定宽高大于浏览器窗口，并且内容的宽高大于给定宽高，scrollHeight和scrollWidth等于内容的宽高+一边的margin+padding+border
@@ -43,10 +43,10 @@ scrollWidth= 实际内容宽度+ 2*padding
 
 scrollLeft和scrollTop
 
+>documentElement和body的关系说明：
+ documentElement是 html，body是它的子元素，
+ body= document.documentElement.childNodes[2];
 
-
-
-
-
-
-
+    <div class="footer">
+      &copy; 2004 Foo Corporation
+    </div>
