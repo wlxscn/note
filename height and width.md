@@ -46,7 +46,36 @@ scrollLeft和scrollTop
 >documentElement和body的关系说明：
  documentElement是 html，body是它的子元素，
  body= document.documentElement.childNodes[2];
+>> 元素，属性，文本节点
+  element的nodeType = 1
+  attr的nodeType = 2
+  text的 nodeType = 3
+  注释的nodeType = 8
+ 文档的nodeType = 9  
 
-    <div class="footer">
-      &copy; 2004 Foo Corporation
-    </div>
+宽高的兼容性问题
+
+获取可是区域的宽高的时候:
+document.documentElement.clientWidth || document.body.clientWidth
+
+scroll相关的宽高存在兼容性问题
+
+### Event的坐标
+1. clientX,clientY (相对于浏览器可视区(0,0)的坐标)
+2. screenX,screenY (相对于设备屏幕左上角(0,0)的坐标)
+3. offsetX,offsetY （相对于事件源左上角的坐标）
+4. pageX,pageY （相对于整个网页左上角的坐标）
+5. x,y (chrome中始终等于clientX和clientY;ie中如果点击的元素设置了定位，则等于offsetX和offsetY，没有设置定位则也等于clientX和clientY)
+
+## jquery相关的宽高
++ width(),height()   content的宽高
+> css('width')的返回值有单位，width()有单位
+
++ innerWidth(),innerHeight() content+padding宽高
+
++ outerWidth(true),outerWidth() content+padding+border宽高,true代表包括margin
+
++ scrollLeft(),scrollTop()
+
++ offset(): 相对于document的当前坐标值(相对于body左上角的left和top)
+  position(): 相对于offsetParent的当前坐标值(相对于offsetParent元素左上角的left和top)

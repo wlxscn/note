@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+        function getScrollWidth(){
+          var div= document.createElement('div');
+          var styles ={
+            width: "100px",
+            height: "100px",
+            backgroundColor: "red",
+            overflowY: "scroll"
+          }
+          for (var i in styles) {
+            div.style[i] = styles[i];
+          }
+          document.body.appendChild(div);
+          var scrollWidth= div.offsetWidth- div.clientWidth;
+          return scrollWidth;
+        }
+        getScrollWidth();
+    </script>
+  </body>
+</html>

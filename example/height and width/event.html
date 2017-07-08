@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #testId {
+        background-color: red;
+        width: 200px;
+        height: 200px;
+        margin: 100px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='testId'>
+
+    </div>
+    <script type="text/javascript">
+      var test= document.getElementById('testId');
+      test.onclick= function(e){
+        console.log(e)
+      }
+    </script>
+  </body>
+</html>

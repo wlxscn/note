@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .wrap {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 100px auto;
+        border: 1px dotted #333;
+      }
+
+      .wrap nav span {
+        display: inline-block;
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        color: #fff;
+        background-color: pink;
+        transform: scale(0);
+        transition: all 1s ease;
+      }
+
+      .active {
+        transform: translate(-50%,-50%) scale(1) !important;
+      }
+
+      .btn {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -10px;
+        margin-top: -10px;
+        background-color: blue;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+       <span>1</span>
+       <span>2</span>
+       <span>3</span>
+       <span>4</span>
+     </nav>
+      <span class="btn">点我</span>
+    </div>
+    <script type='text/javascript' src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script type="text/javascript">
+      $(function () {
+          var wrap= $('.wrap');
+          var menu= $('.wrap nav span'), len= menu.length;
+          var startAngle= 0,endAngle= 360,radius= 100;
+          var gapAngle= 360/len;
+          function expandMenu(){
+            $.each(menu,function(index,item){
+              var angle= (startAngle + gapAngle*index)/180*Math.PI;
+              var myX= radius+radius*Math.cos(angle);
+              var myY= radius+radius*Math.sin(angle);
+              $(this).addClass('active')
+              $(this).css({
+                left: myX + 'px',
+                top: myY + 'px'
+              })
+            })
+          }
+          $('.btn').on('click',expandMenu);
+      })
+    </script>
+  </body>
+</html>
