@@ -62,3 +62,116 @@ for (let [key, value] of jane) {
   console.log(`${key}: ${value}`);
 }
 ```
+
+## generator处理异步流程
+
+### js的Trunk函数
+
+Trunk函数将多参数函数替换成只接受回调函数作为参数的单参数函数。
+
+```
+// 正常版本的readFile（多参数版本）
+fs.readFile(fileName, callback);
+
+// Thunk版本的readFile（单参数版本）
+var Thunk = function (fileName) {
+  return function (callback) {
+    return fs.readFile(fileName, callback);
+  };
+};
+
+var readFileThunk = Thunk(fileName);
+readFileThunk(callback);
+```
+
+### Trunk函数实现流程管理
+
+```
+var fs = require('fs');
+var thunkify = require('thunkify');
+var readFileThunk = thunkify(fs.readFile);
+
+var gen = function* (){
+  var r1 = yield readFileThunk('/etc/fstab');
+  console.log(r1.toString());
+  var r2 = yield readFileThunk('/etc/shells');
+  console.log(r2.toString());
+};
+```
+
+yield将程序的执行权移出了generator函数，在Trunk的callback函数中可以将执行权交还给generator函数。
+
+手动执行上面的generator函数
+
+```
+var g= gen();
+var r1= g.next();
+r1.value(function(err, data) {
+   if(err) throw err;
+   var r2= g.next(data);
+   r2.value(function(err, data) {
+       if(err) throw err;
+       g.next(data);
+   })
+})
+```
+
+使用Trunk函数自动执行流程
+
+```
+function run(gen) {
+   var g= gen();
+
+   function next(err, data) {
+      var result= g.next();
+      if(result.done) return result.value;
+      result.value(next);
+   }
+
+   next();  //递归的回调函数
+}
+
+run(gen);
+```
+
+## co模块实现generator的自动执行
+
+### 基于Promise的自动执行
+
+```
+var fs = require('fs');
+
+var readFile = function (fileName){
+  return new Promise(function (resolve, reject){
+    fs.readFile(fileName, function(error, data){
+      if (error) return reject(error);
+      resolve(data);
+    });
+  });
+};
+
+var gen = function* (){
+  var f1 = yield readFile('/etc/fstab');
+  var f2 = yield readFile('/etc/shells');
+  console.log(f1.toString());
+  console.log(f2.toString());
+};
+```
+
+```
+function run(gen){
+  var g = gen();
+
+  function next(data){
+    var result = g.next(data);
+    if (result.done) return result.value;
+    result.value.then(function(data){
+      next(data);
+    });
+  }
+
+  next();
+}
+
+run(gen);
+```
