@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        .calendar {
+            background: #fff;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #dfdfdf;
+        }
+
+        .calendar .calendar-caption::after, .calendar .calendar-content::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .calendar .calendar-caption {
+            border-bottom: 1px solid #dfdfdf;
+        }
+
+        .calendar .calendar-caption .calendar-cell {
+            float: left;
+            text-align: center;
+            width: 14.285%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            color: #aaa;
+        }
+
+        .calendar .calendar-content .lastMothCell, .calendar .calendar-content .nextMothCell {
+            opacity: .2;
+            width: 14.285%;
+            float: left;
+            width: 14.28571428%;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 14px;
+            color: #000;
+            z-index: 1;
+        }
+
+        .calendar .calendar-content .curMothCell{
+            width: 14.285%;
+            float: left;
+            width: 14.28571428%;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 14px;
+            color: #000;
+            z-index: 1;
+        }
+
+        .calendar .calendar-content .curDate {
+            color: #4ed;
+        }
+    </style>
+</head>
+
+<body>
+    <select name="year" id="year" onchange="buildCalender()">
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+    </select>
+
+     <select name="month" id="month" onchange="buildCalender()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="9">11</option>
+        <option value="10">12</option>
+    </select>
+    <div class="calendar">
+
+    </div>
+    <script src="./calendar.js"></script>
+</body>
+
+</html>
