@@ -1,4 +1,4 @@
-+ 数组去重的方法
++ 数组去重的方法 reset111
 ```
 Array.prototype.unique= function(){
   let uniqueArr=this.filter(function(item,index,arr){

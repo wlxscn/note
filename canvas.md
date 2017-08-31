@@ -1,4 +1,4 @@
-### 绘制形状
+### 绘制形状 reset222
 + 渲染上下文（2D渲染上下文）
 ```
 var canvas = document.getElementById('tutorial');
