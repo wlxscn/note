@@ -1,6 +1,7 @@
 ### mongoose
 
-#### mongoose使用模式
+#### mongoose的使用
+
 + Schema
 
 ```

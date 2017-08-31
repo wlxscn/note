@@ -1,6 +1,6 @@
 'use strict'
 
-var DEFAULT_INTERVAL= 1000/60；
+var DEFAULT_INTERVAL= 1000/60;
 
 //初始状态
 var STATE_INITIAL= 0;

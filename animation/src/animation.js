@@ -58,7 +58,6 @@ Animation.prototype.changePositon = function (ele, positions, imageUrl) {
      type= TASK_SYNC;
    }
 
-
 };
 
 Animation.prototype.changeSrc = function (ele, src) {
@@ -126,7 +125,7 @@ Animation.prototype._runTask= function(){
   if(!this.taskQueue || this.state !== STATE_START) {
     return;
   }
-  if(this.index ==== this.taskQueue.length){
+  if(this.index === this.taskQueue.length){
     this.dispose();
     return;
   }
