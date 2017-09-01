@@ -1,4 +1,4 @@
-+ 数组去重的方法 reset --amend --111
++ 数组去重的方法 reset --amend --111 --hotfix
 ```
 Array.prototype.unique= function(){
   let uniqueArr=this.filter(function(item,index,arr){
