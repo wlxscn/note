@@ -1,5 +1,4 @@
-+ 数组去重的方法  --merge test1
-merge3
++ 数组去重的方法  11
 
 ```
 Array.prototype.unique= function(){
@@ -9,7 +8,6 @@ Array.prototype.unique= function(){
   return uniqueArr;
 }
 ```
-1223
 + 寻找数组中的第一个质数
 ```
 function isPrime(item){
