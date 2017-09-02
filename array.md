@@ -1,4 +1,6 @@
 + 数组去重的方法  --rebase test1
++ 数组去重的方法  --rebase test2
+
 ```
 Array.prototype.unique= function(){
   let uniqueArr=this.filter(function(item,index,arr){
