@@ -1,4 +1,5 @@
 + 数组去重的方法  --merge test1
+merge3
 
 ```
 Array.prototype.unique= function(){
