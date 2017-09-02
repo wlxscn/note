@@ -4,7 +4,7 @@ merge3
 ```
 Array.prototype.unique= function(){
   let uniqueArr=this.filter(function(item,index,arr){
-    return item.indexOf(arr) === index;
+    return item.indexOf(arr) === index;11
   })
   return uniqueArr;
 }
