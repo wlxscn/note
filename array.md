@@ -8,7 +8,7 @@ Array.prototype.unique= function(){
   return uniqueArr;
 }
 ```
-
+1223
 + 寻找数组中的第一个质数
 ```
 function isPrime(item){
