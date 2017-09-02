@@ -1,4 +1,4 @@
-+ 数组去重的方法  112334
++ 数组去重的方法  11
 
 ```
 Array.prototype.unique= function(){
