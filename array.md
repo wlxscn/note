@@ -1,5 +1,4 @@
-+ 数组去重的方法  --rebase test1
-+ 数组去重的方法  --rebase test2
++ 数组去重的方法  --merge test2
 
 ```
 Array.prototype.unique= function(){
