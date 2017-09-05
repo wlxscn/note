@@ -28,8 +28,18 @@
 将未跟踪的文件从工作目录移除
 
 ### git commit --amend(不要使用在公共的提交上)
+合并缓存的修改和上一次的提交
 
-### git rebase(不要rebase公共历史，线性历史) 和 git merge
+### git merge
+
+### git rebase <base> (不要rebase公共历史，线性历史) 
     git rebase -i(交互式的rebase,可以整理提交的历史)
+
+    将分支移到一个新的基提交
+
+### git pull 
+    默认相当于执行git fetch  git merge
+
+    可以使用git pull --rebase，就会使用git rebase来合并远程和本地分支    
 
 参考资料: [地址](https://github.com/geeeeeeeeek/git-recipes/wiki)
