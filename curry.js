@@ -22,6 +22,7 @@ function add() {
 
         return _adder;
     }
+    
     return adder.apply(null, [].slice.call(arguments));
 }
 
