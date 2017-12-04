@@ -1,16 +1,16 @@
 // 将方法依次放入队列，后续拿出来依次执行
 // queue的方式
-function LazyMan(name){
-  if(!(this instanceof LazyMan)) {
-    return new LazyMan();
-  }
+function LazyMan(name) {
+    if (!(this instanceof LazyMan)) {
+        return new LazyMan();
+    }
 
-  this.queue = [];
+    this.queue = [];
 
-  this.queue.push(() => {
-    console.log(`hello ${name}`);
-    this.next();
-  })
+    this.queue.push(() => {
+        console.log(`hello ${name}`);
+        this.next();
+    })
 
 
     setTimeout(() => {
@@ -18,10 +18,10 @@ function LazyMan(name){
     });
 }
 
-LazyMan.prototype.next= function(){
-  if(this.queue.length > 0){
-    this.queue.shift()();
-  }
+LazyMan.prototype.next = function () {
+    if (this.queue.length > 0) {
+        this.queue.shift()();
+    }
 }
 
 LazyMan.prototype.eat = function eat(food) {
@@ -31,6 +31,7 @@ LazyMan.prototype.eat = function eat(food) {
     });
     return this;
 };
+
 LazyMan.prototype.sleep = function sleep(sec) {
     this.queue.push(() => {
         setTimeout(() => {
@@ -40,6 +41,7 @@ LazyMan.prototype.sleep = function sleep(sec) {
     });
     return this;
 };
+
 LazyMan.prototype.sleepFirst = function sleepFirst(sec) {
     this.queue.unshift(() => {
         setTimeout(() => {
@@ -49,4 +51,5 @@ LazyMan.prototype.sleepFirst = function sleepFirst(sec) {
     });
     return this;
 };
+
 LazyMan('glm').eat('apple').sleep(2).eat('banana').sleepFirst(3).eat('peach');

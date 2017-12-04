@@ -157,6 +157,7 @@ var gen = function* (){
   console.log(f2.toString());
 };
 ```
+----
 
 ```
 function run(gen){
