@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <title>Canvas tutorial</title>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script type="text/javascript">
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+        let drawing = false;
+        let point = {};
+
+        ctx.lineWidth = 6;
+        ctx.strokeStyle = 'black';
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        // ctx.translate(75, 75);
+
+        let tp = canvas.getBoundingClientRect().top;
+        let left = canvas.getBoundingClientRect().left;
+
+        const raf = window.requestAnimationFrame;
+
+        const paint = (type) => {
+            switch (type) {
+                case 1:
+                    ctx.beginPath();
+                    ctx.moveTo(point.x, point.y);
+                case 2:
+                    ctx.lineTo(point.x, point.y);
+                    ctx.stroke();
+                    break;
+                default: break;    
+            }
+        }
+
+        const drawFn = (type) => (e) => {
+            point.x = e.clientX - left + 0.5;
+            point.y = e.clientY - tp + 0.5;
+
+            if (type === 1) {
+                drawing = true;
+            }
+
+            if (type === 1 || drawing) {
+                paint(type);
+            }
+        }
+
+        const start = drawFn(1);
+
+        const move = drawFn(2);
+
+        const optimizeMove = raf ? (e) => {
+            raf(() => { move(e); })
+        } : move;
+
+        function bind() {
+            canvas.addEventListener('mousedown', start, false);
+
+            canvas.addEventListener('mousemove', optimizeMove, false);
+
+            canvas.addEventListener('mouseup', () => { drawing = false; }, false)
+
+            canvas.addEventListener('mouseleave', () => { drawing = false; }, false)
+        }
+
+
+        bind();
+    </script>
+</body>
+
+</html>
